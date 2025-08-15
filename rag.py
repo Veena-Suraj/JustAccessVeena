@@ -115,13 +115,20 @@ def get_model():
 
 
 def translator(context: str, lang: str):
+    # lang: 'en' → translate to English, 'sp' → to Spanish, 'hi' → to Hindi
     if lang == "en":
-        template = SPANISH_TO_ENGLISH_TEMPLATE
-    else:
-        if lang == "sp":
-            template = ENGLISH_TO_SPANISH_TEMPLATE
-        elif lang == "hi":
+        # to English means context is in Spanish or Hindi
+        if is_hindi_text(context):
             template = HINDI_TO_ENGLISH_TEMPLATE
+        else:
+            template = SPANISH_TO_ENGLISH_TEMPLATE
+    elif lang == "sp":
+        template = ENGLISH_TO_SPANISH_TEMPLATE
+    elif lang == "hi":
+        template = ENGLISH_TO_HINDI_TEMPLATE
+    else:
+        raise ValueError("Unsupported language code")
+        
     prompt = ChatPromptTemplate.from_template(template)
     model = get_model()
     output_parser = StrOutputParser()
@@ -134,6 +141,9 @@ def translator(context: str, lang: str):
 
     return translation
 
+def is_hindi_text(text: str) -> bool:
+    # crude check: Hindi characters range in Unicode: \u0900-\u097F
+    return any('\u0900' <= ch <= '\u097F' for ch in text)
 
 def get_similar_context(question: str, lang: str):
     if lang == "sp":
