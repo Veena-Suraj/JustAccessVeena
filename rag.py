@@ -173,7 +173,7 @@ def streaming_question_answering(query_question: str, context_text: str, lang: s
 
         return language_chain.stream({"context": answer})
     elif lang == "hi":
-        translate_prompt = ChatPromptTemplate.from_template(HINDI_TO_SPANISH_TEMPLATE)
+        translate_prompt = ChatPromptTemplate.from_template(HINDI_TO_ENGLISH_TEMPLATE)
         # create the chain
         chain = prompt | model | output_parser
 
