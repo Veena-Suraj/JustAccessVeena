@@ -117,10 +117,11 @@ def get_model():
 def translator(context: str, lang: str):
     if lang == "en":
         template = SPANISH_TO_ENGLISH_TEMPLATE
-    elif lang == "sp":
-        template = ENGLISH_TO_SPANISH_TEMPLATE
-    elif lang == "hi":
-        template = HINDI_TO_ENGLISH_TEMPLATE
+    else:
+        if lang == "sp":
+            template = ENGLISH_TO_SPANISH_TEMPLATE
+        elif lang == "hi":
+            template = HINDI_TO_ENGLISH_TEMPLATE
     prompt = ChatPromptTemplate.from_template(template)
     model = get_model()
     output_parser = StrOutputParser()
