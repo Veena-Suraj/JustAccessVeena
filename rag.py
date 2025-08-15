@@ -37,7 +37,17 @@ ENGLISH_TO_SPANISH_TEMPLATE = """
 "You are highly trained language translation assistant."
 "Use the following piece of context in english and translate it to spanish"
 "Please do not use data outside the context to translate any questions."
-"don't try to make up an translation."
+"don't try to make up a translation."
+"\n\n"
+{context}
+"\n\n"
+Translation:
+"""
+ENGLISH_TO_HINDI_TEMPLATE = """
+"You are highly trained language translation assistant."
+"Use the following piece of context in english and translate it to hindi"
+"Please do not use data outside the context to translate any questions."
+"don't try to make up a translation."
 "\n\n"
 {context}
 "\n\n"
@@ -54,7 +64,16 @@ SPANISH_TO_ENGLISH_TEMPLATE = """
 "\n\n"
 Translation:
 """
-
+HINDI_TO_ENGLISH_TEMPLATE = """
+"You are highly trained language translation assistant."
+"Use the following piece of context in hindi and translate it to english"
+"Please do not use data outside the context to translate any questions."
+"don't try to make up a translation."
+"\n\n"
+{context}
+"\n\n"
+Translation:
+"""
 
 # pinecone setup
 pc = Pinecone(api_key=os.environ["PINECONE_API_KEY"])
@@ -100,6 +119,8 @@ def translator(context: str, lang: str):
         template = SPANISH_TO_ENGLISH_TEMPLATE
     elif lang == "sp":
         template = ENGLISH_TO_SPANISH_TEMPLATE
+    elif lang == "hi":
+        template = HINDI_TO_ENGLISH_TEMPLATE
     prompt = ChatPromptTemplate.from_template(template)
     model = get_model()
     output_parser = StrOutputParser()
@@ -115,6 +136,8 @@ def translator(context: str, lang: str):
 
 def get_similar_context(question: str, lang: str):
     if lang == "sp":
+        question = str(translator(question, "en"))
+    elif lang == "hi":
         question = str(translator(question, "en"))
     # get the query embeddings
     quer_embed_data = get_openai_embeddings(question)
@@ -139,8 +162,18 @@ def streaming_question_answering(query_question: str, context_text: str, lang: s
 
         # get the answer
         return chain.stream({"context": context_text, "question": query_question})
-    else:
+    elif lang == "sp":
         translate_prompt = ChatPromptTemplate.from_template(ENGLISH_TO_SPANISH_TEMPLATE)
+        # create the chain
+        chain = prompt | model | output_parser
+
+        answer = chain.invoke({"context": context_text, "question": query_question})
+
+        language_chain = translate_prompt | model | output_parser
+
+        return language_chain.stream({"context": answer})
+    elif lang == "hi":
+        translate_prompt = ChatPromptTemplate.from_template(HINDI_TO_SPANISH_TEMPLATE)
         # create the chain
         chain = prompt | model | output_parser
 
