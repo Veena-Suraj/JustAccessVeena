@@ -41,7 +41,6 @@ ENGLISH_TO_SPANISH_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 ENGLISH_TO_HINDI_TEMPLATE = """
 "You are highly trained language translation assistant."
@@ -51,7 +50,6 @@ ENGLISH_TO_HINDI_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 
 ENGLISH_TO_VIETNAMESE_TEMPLATE = """
@@ -62,7 +60,6 @@ ENGLISH_TO_VIETNAMESE_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 
 ENGLISH_TO_MANDARIN_TEMPLATE = """
@@ -73,7 +70,6 @@ ENGLISH_TO_MANDARIN_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 
 SPANISH_TO_ENGLISH_TEMPLATE = """
@@ -84,7 +80,6 @@ SPANISH_TO_ENGLISH_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 HINDI_TO_ENGLISH_TEMPLATE = """
 "You are highly trained language translation assistant."
@@ -94,7 +89,6 @@ HINDI_TO_ENGLISH_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 
 VIETNAMESE_TO_ENGLISH_TEMPLATE = """
@@ -105,7 +99,6 @@ VIETNAMESE_TO_ENGLISH_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 
 MANDARIN_TO_ENGLISH_TEMPLATE = """
@@ -116,7 +109,6 @@ MANDARIN_TO_ENGLISH_TEMPLATE = """
 "\n\n"
 {context}
 "\n\n"
-Translation:
 """
 
 # pinecone setup
