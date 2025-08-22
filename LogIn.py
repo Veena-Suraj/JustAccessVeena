@@ -11,7 +11,7 @@ if 'lang' not in st.session_state:
 with st.sidebar:
     option = st.selectbox(
             SENTENCE["sent6"][st.session_state.lang],
-            ("English", "Spanish", "Hindi"),
+            ("English", "Spanish", "Hindi", "Vietnamese", "Mandarin"),
             placeholder=SENTENCE["sent7"][st.session_state.lang],
             index = None
         )
@@ -24,6 +24,12 @@ with st.sidebar:
         st.rerun()
     elif option == "Hindi":
         st.session_state.lang = "hi"
+        st.rerun()
+    elif option == "Vietnamese":
+        st.session_state.lang = "vi"
+        st.rerun()
+    elif option == "Mandarin":
+        st.session_state.lang = "zh"
         st.rerun()
 
 # Home page
