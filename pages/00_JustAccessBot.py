@@ -62,10 +62,15 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant"):
-        pinecone_context, question = get_similar_context(prompt, st.session_state.lang)
+   with st.chat_message("assistant"):
+        pinecone_context, question, source = get_similar_context(prompt, st.session_state.lang)
         response = st.write_stream(streaming_question_answering(question, pinecone_context, st.session_state.lang))
-    st.session_state.messages.append({"role": "assistant", "content": response})
+        if source and source != "Source not found":
+            st.markdown(f"Source: {source}")
+            response_content = f"{response}\n\nSource: {source}"
+        else:
+            response_content = response
+    st.session_state.messages.append({"role": "assistant", "content": response_content})
 
 
 
