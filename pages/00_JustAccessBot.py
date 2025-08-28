@@ -50,7 +50,7 @@ st.title(SENTENCE["sent10"][st.session_state.lang])
 if "messages" not in st.session_state or not st.session_state.messages:
     st.session_state.messages = [FIRST_MESSAGE]
 
-st.markdown(SENTENCE[sent11][st.session_state.lang])
+st.markdown(SENTENCE["sent11"][st.session_state.lang])
 
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
