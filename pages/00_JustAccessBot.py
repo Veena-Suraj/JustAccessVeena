@@ -62,7 +62,7 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-   with st.chat_message("assistant"):
+    with st.chat_message("assistant"):
         pinecone_context, question, source = get_similar_context(prompt, st.session_state.lang)
         response = st.write_stream(streaming_question_answering(question, pinecone_context, st.session_state.lang))
         if source and source != "Source not found":
