@@ -142,7 +142,8 @@ def content_extractor(similar_data):
     top_values = similar_data["matches"]
     # get the text out
     text_content = [sub_content["metadata"]["text"] for sub_content in top_values]
-    return " ".join(text_content)
+    sources = [match['metadata'].get('source', 'Source not found') for match in top_values]
+    return " ".join(text_content), sources[0] if sources else "Source not found"
 
 
 def get_model():
@@ -214,9 +215,9 @@ def get_similar_context(question: str, lang: str):
     similar_chunks = query_response(quer_embed_data)
 
     # extract the similar text data
-    similar_content = content_extractor(similar_chunks)
+    similar_content, source = content_extractor(similar_chunks)
 
-    return similar_content, question
+    return similar_content, question, source
 
 
 def streaming_question_answering(query_question: str, context_text: str, lang: str, template: str = COMMON_ENGLISH_TEMPLATE):
