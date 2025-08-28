@@ -68,6 +68,12 @@ SENTENCE = {
         "hi": "जस्टएक्सेस चैटबॉट ⚖️",
         "vi": "ChatBot JustAccess ⚖️",
         "zh": "正义通道聊天机器人 ⚖️"
+    },
+    "sent11": {
+        "en": "Disclaimer: This is a bot generated message and should not be considered professional advice.",
+        "sp": "Descargo de responsabilidad: este es un mensaje generado por un bot y no debe considerarse asesoramiento profesional.",
+        "hi": "अस्वीकरण: यह एक बॉट द्वारा उत्पन्न संदेश है और इसे पेशेवर सलाह नहीं माना जाना चाहिए।",
+        "vi": "Tuyên bố miễn trừ trách nhiệm: Đây là tin nhắn do bot tạo ra và không được coi là lời khuyên chuyên nghiệp.",
+        "zh": "免責聲明：這是機器人產生的訊息，不應被視為專業建議。"
     }
-
 }
