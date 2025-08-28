@@ -16,7 +16,7 @@ os.environ["PINECONE_API_KEY"] = st.secrets["llm"]["PINECONE_API_KEY"]
 os.environ["INDEX_HOST"] = st.secrets["llm"]["INDEX_HOST"]
 
 # constants
-NAMESPACE_KEY = "JAV"
+NAMESPACE_KEY = "srini"
 TEXT_MODEL = "text-embedding-ada-002"
 QA_MODEL = "gpt-4o-mini"
 COMMON_ENGLISH_TEMPLATE = """
