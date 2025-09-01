@@ -89,12 +89,5 @@ SENTENCE = {
         "hi": "एक राज्य चुनें",
         "vi": "Chọn một tiểu bang",
         "zh": "选择一个州"
-    },
-    "sent14": {
-        "en": "Click here for legal aid resources in",
-        "sp": "Haga clic aquí para obtener recursos de asistencia legal en",
-        "hi": "में कानूनी सहायता संसाधनों के लिए यहां क्लिक करें",
-        "vi": "Nhấp vào đây để biết các tài nguyên trợ giúp pháp lý ở",
-        "zh": "单击此处获取法律援助资源"
     }
 }
