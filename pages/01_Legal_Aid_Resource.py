@@ -1,6 +1,6 @@
 import streamlit as st
 from translator_config import SENTENCE
-from rag import get_legal_aid_resources
+from rag import get_legal_aid_resources, translate_list
 
 if 'lang' not in st.session_state:
     st.session_state.lang = "en"
@@ -29,7 +29,7 @@ with st.sidebar:
         st.session_state.lang = "zh"
         st.rerun()
 
-st.title(SENTENCE["sent12"][st.session_state.lang])
+st.title(SENTENCE["sent11"][st.session_state.lang])
 
 states = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -44,9 +44,13 @@ states = [
     "West Virginia", "Wisconsin", "Wyoming"
 ]
 
-selected_state = st.selectbox(SENTENCE["sent13"][st.session_state.lang], states)
+translated_states = translate_list(states, st.session_state.lang)
+state_map = dict(zip(translated_states, states))
 
-if selected_state:
+selected_translated_state = st.selectbox(SENTENCE["sent12"][st.session_state.lang], translated_states)
+
+if selected_translated_state:
+    selected_english_state = state_map[selected_translated_state]
     with st.spinner('Finding resources...'):
-        resources = get_legal_aid_resources(selected_state, st.session_state.lang)
+        resources = get_legal_aid_resources(selected_english_state, st.session_state.lang)
         st.markdown(resources)
