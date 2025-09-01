@@ -285,6 +285,12 @@ def streaming_question_answering(query_question: str, context_text: str, lang: s
         chain = prompt | model | output_parser
         return chain.stream({"context": context_text, "question": query_question})
 
+def translate_list(items: list[str], lang: str) -> list[str]:
+    if lang == "en":
+        return items
+    translated_items = [translator(item, lang) for item in items]
+    return translated_items
+
 def get_legal_aid_resources(state: str, lang: str):
     prompt = ChatPromptTemplate.from_template(LEGAL_AID_TEMPLATE)
     model = get_model()
