@@ -29,7 +29,7 @@ with st.sidebar:
         st.session_state.lang = "zh"
         st.rerun()
 
-st.title(SENTENCE["sent11"][st.session_state.lang])
+st.title(SENTENCE["sent12"][st.session_state.lang])
 
 states = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -44,7 +44,7 @@ states = [
     "West Virginia", "Wisconsin", "Wyoming"
 ]
 
-selected_state = st.selectbox(SENTENCE["sent12"][st.session_state.lang], states)
+selected_state = st.selectbox(SENTENCE["sent13"][st.session_state.lang], states)
 
 if selected_state:
     with st.spinner('Finding resources...'):
