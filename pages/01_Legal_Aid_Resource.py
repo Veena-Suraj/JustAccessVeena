@@ -4,7 +4,7 @@ from translator_config import SENTENCE
 if 'lang' not in st.session_state:
     st.session_state.lang = "en"
 
-st.title(SENTENCE["sent11"][st.session_state.lang])
+st.title(SENTENCE["sent12"][st.session_state.lang])
 
 states = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -72,7 +72,7 @@ state_links = {
     "Wyoming": "https://www.lawhelp.org/wy"
 }
 
-selected_state = st.selectbox(SENTENCE["sent12"][st.session_state.lang], states)
+selected_state = st.selectbox(SENTENCE["sent13"][st.session_state.lang], states)
 
 if selected_state:
-    st.markdown(f"[{SENTENCE['sent13'][st.session_state.lang]} {selected_state}]({state_links[selected_state]})", unsafe_allow_html=True)
+    st.markdown(f"[{SENTENCE['sent14'][st.session_state.lang]} {selected_state}]({state_links[selected_state]})", unsafe_allow_html=True)
