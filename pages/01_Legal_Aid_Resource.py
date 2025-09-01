@@ -29,7 +29,7 @@ with st.sidebar:
         st.session_state.lang = "zh"
         st.rerun()
 
-st.title(SENTENCE["sent11"][st.session_state.lang])
+st.title(SENTENCE["sent12"][st.session_state.lang])
 
 states = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
@@ -47,7 +47,7 @@ states = [
 translated_states = translate_list(states, st.session_state.lang)
 state_map = dict(zip(translated_states, states))
 
-selected_translated_state = st.selectbox(SENTENCE["sent12"][st.session_state.lang], translated_states)
+selected_translated_state = st.selectbox(SENTENCE["sent13"][st.session_state.lang], translated_states)
 
 if selected_translated_state:
     selected_english_state = state_map[selected_translated_state]
