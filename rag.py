@@ -285,7 +285,7 @@ def streaming_question_answering(query_question: str, context_text: str, lang: s
         chain = prompt | model | output_parser
         return chain.stream({"context": context_text, "question": query_question})
 
-def get_legal_aid_resources(state: str):
+def get_legal_aid_resources(state: str, lang: str):
     prompt = ChatPromptTemplate.from_template(LEGAL_AID_TEMPLATE)
     model = get_model()
     output_parser = StrOutputParser()
@@ -295,5 +295,8 @@ def get_legal_aid_resources(state: str):
 
     # get the answer
     resources = chain.invoke({"state": state})
+
+    if lang != "en":
+        return translator(resources, lang)
 
     return resources
